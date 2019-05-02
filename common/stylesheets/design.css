@@ -69,15 +69,15 @@ a:hover
 
 .anim-button
 {
-    background-color: #71118f;
+    background-color: #00964b;
     color: white;
-    border: 2px solid #540f57;
+    border: 2px solid #008341;
     outline: none;
 }
 
 .anim-button:hover
 {
-    background-color: #74229f;
+    background-color: #00af58;
 }
 
 .anim-slider 
