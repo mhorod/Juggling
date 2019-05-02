@@ -1,0 +1,106 @@
+/* For screens with width > 1000px */
+:root
+{
+    --slider-handle-size: 20px;
+    --slider-border-radius: 40%;
+    --slider-handle-width: 20px;
+
+    --slider-bar-width: 80%;
+    --slider-bar-height: 5px;
+
+}
+body
+{
+    font-size: var(--main-font-size);
+}
+.slider-wrapper
+{
+    width: var(--trick-width);
+    padding: var(--trick-padding);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 20px;
+    margin:auto;
+}
+
+.anim-button
+{
+    width: calc(100% - var(--slider-bar-width));
+}
+
+.anim-slider 
+{
+    width: var(--slider-bar-width); 
+    height: var(--slider-bar-height);
+}
+
+.anim-slider::-webkit-slider-thumb 
+{
+    width: var(--slider-handle-size);
+    height: var(--slider-handle-size);
+    background: var(--slider-handle-color);
+}
+  
+.anim-slider::-moz-range-thumb 
+{
+    width: var(--slider-handle-size);
+    height: var(--slider-handle-size);
+    background: var(--slider-handle-color);
+}
+
+#page-wrapper
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: var(--page-wrapper-padding);
+    overflow: hidden;
+}
+
+.trick-wrapper
+{
+    overflow: hidden;
+    padding: var(--inner-wrapper-padding);
+}
+
+.more-wrapper
+{
+    overflow: hidden;
+    padding: var(--inner-wrapper-padding);
+}
+
+.more-container
+{
+    width: var(--more-container-width);
+    overflow: hidden;
+}
+
+.animation-wrapper
+{
+    width: var(--trick-width);
+    height: var(--trick-height);
+    padding: var(--trick-padding);
+}
+
+.mainCanvas
+{
+    width: inherit;
+    height: inherit;
+}
+
+.trick-desc
+{
+    display: block;
+    width: var(--trick-width);
+    padding: var(--trick-padding);
+    overflow: hidden;
+}
+.desc-item
+{
+    display: block;
+    width: var(--trick-width);
+    text-align: center;
+}
