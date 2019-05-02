@@ -10,7 +10,7 @@ window.addEventListener('keydown', function(e) {
 
 
 //Code added by Hichał
-function update_trick_desc(trickID)
+function update_entry_trick_desc(entryID)
 {
 	let request = new XMLHttpRequest();
     request.onreadystatechange = function()
@@ -22,10 +22,9 @@ function update_trick_desc(trickID)
 	    }
     }
     //This link will likely change
-	request.open("GET", "common/blogEntry.php?trickID="+trickID, true);
+	request.open("GET", "common/blogEntry.php?entryID="+entryID, true);
 	request.send();	
 }
-
 
 function main()
 {
@@ -34,7 +33,8 @@ function main()
     let menu = suwajka.childNodes[0];
     let divs = menu.childNodes;
     let frames = [];
-    for(let i = 0; i <= 15; i++){
+    for(let i = 0; i <= 15; i++)
+    {
         frames.push(new JugglerFrame(i, menu));
     }
     let activeElement = divs[0];
@@ -72,7 +72,7 @@ function main()
         }
     }
     slider.oninput = updateAnimSpeed;
-    update_trick_desc(0);
+    update_entry_trick_desc(0);
     divs.forEach(
         function(currentValue, index){
             currentValue.onclick = function()
@@ -93,7 +93,7 @@ function main()
                 refreshDivs();
                 menu.style.left = (frames.length-1)*divs[0].offsetWidth/2-index*divs[0].offsetWidth;
 
-				update_trick_desc(index); //Updates current description
+				update_entry_trick_desc(index); //Updates current description
 				
             };
     });

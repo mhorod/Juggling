@@ -1,6 +1,5 @@
 <?php
 
-
 function loadTrick($trickID)
 {
     require_once("getTrickData.php");
@@ -31,17 +30,30 @@ EOS;
 return $text;
 }
 
-function loadBlogEntry($trickID, $withTrick = true)
+
+
+function loadBlogEntry($entryID, $withTrick = true)
 {
+
+require_once("getEntryData.php");
+
+$query_row = getEntryData($entryID);
+if($query_row === null)
+{
+    $trickID = -1;
+    $entry = "Error. Not found.";
+    $date = "-";
+}
+else
+{
+    $trickID = $query_row["trickID"];
+    $entry = $query_row["entry"];
+    $date = $query_row["date"];
+}
+    
 require_once("getTrickData.php");
-    
-$day = 1 + ($trickID - 1) * 7;
-    
 $trickText = "";
 if($withTrick) {$trickText = loadTrick($trickID);}
-    
-$query_row = getTrickData($trickID);
-$desc = $query_row["description"];
     
 //Will be loaded using Ajax   
 $mainText = <<<EOS
@@ -49,8 +61,8 @@ $mainText = <<<EOS
     <div class = "post-body">
         $trickText
         <div class = "post-text-wrapper">
-        <h3 class = "post-title">Trik tygodnia $day-05-2019</h3>
-        $desc
+        <h3 class = "post-title">Trik tygodnia $date</h3>
+        $entry
         </div>
     </div>
     <div class = "reaction-wrapper"> 
@@ -67,11 +79,19 @@ EOS;
 echo $mainText;
 }
 
-if(isset($_GET["trickID"]))
+if(isset($_GET["entryID"]))
 {
-    $trickID = $_GET["trickID"];
-    unset($_GET["trickID"]);
-    loadBlogEntry($trickID, false);
+    $entryID = $_GET["entryID"];
+    unset($_GET["entryID"]);
+    if(isset($_GET["withTrick"]))
+    {
+        unset($_GET["withTrick"]);
+        loadBlogEntry($entryID, true);
+    }
+    else
+    {
+        loadBlogEntry($entryID, false);
+    }
 }
 
 
