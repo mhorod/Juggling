@@ -142,7 +142,6 @@ footer
 }
 #suwajka section div 
 {
-  float: left;
   transform: scale(1);
   transition: transform 0.5s;
 }
