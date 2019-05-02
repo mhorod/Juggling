@@ -21,9 +21,8 @@ function getTrickData($trickNumber)
     
 }
 
-function sendTrickData($trickNumber)
+function getTrickDataJSON($trickNumber)
 {
-    
     $row = getTrickData($trickNumber);
         
     if($row != null)
@@ -35,18 +34,24 @@ function sendTrickData($trickNumber)
         $desc = $row["description"];
         $code = $row["code"];
 
-        //Send JSON back
-        echo<<<END
+        $text = <<<END
         ["$name", "$difficulty", "$siteswap", "$desc", $code]
 END;
     }
     else
     {
-        echo<<<END
+        $text = <<<END
         ["Trick not found", "", "", "", ""]
 END;
     }
+    return $text;
+}
+    
 
+
+function sendTrickData($trickNumber)
+{
+    echo getTrickDataJSON($trickNumber);
 }
 
 if(isset($_GET["trickID"])) 

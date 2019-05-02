@@ -19,8 +19,7 @@
         <?php require_once("common/userMenu.php");?>
         <div id = "page-wrapper">
 
-            <nav id="suwajka"><section></section>
-            </nav>
+            <nav id="suwajka"><section></section><?php require_once("common/getEntryData.php");  echo implode(",",getEntryCount()); ?></nav>
             
             <br/>
             

@@ -18,16 +18,15 @@ function update_entry_trick_desc(entryID)
         if(request.readyState == 4 && request.status == 200)
         {
             let data = eval(request.responseText);
-            //[{trickID}, {entry}, {date}]
+            //[{entry}, {date}]
             
-            document.getElementsByClassName("post-title")[0].innerHTML = "Trik tygodnia " + data[2];
-            document.getElementsByClassName("post-text")[0].innerHTML = data[1];
+            document.getElementsByClassName("post-title")[0].innerHTML = "Trik tygodnia " + data[1];
+            document.getElementsByClassName("post-text")[0].innerHTML = data[0];
 	    }
     }
     
     document.getElementsByClassName("post-title")[0].innerHTML = "Trik tygodnia loading..." ;
     document.getElementsByClassName("post-text")[0].innerHTML = "loading...";
-    //This link will likely change
 	request.open("GET", "common/getEntryData.php?entryID="+entryID, true);
 	request.send();	
 }
@@ -36,12 +35,17 @@ function main()
 {
     globalStyle = getComputedStyle(document.body);
     let suwajka = document.getElementById("suwajka");
+
     let menu = suwajka.childNodes[0];
+    let count = suwajka.childNodes[1].data;
+
+    suwajka.childNodes[1].remove();
+
     let divs = menu.childNodes;
     let frames = [];
-    for(let i = 0; i <= 15; i++)
+    for(let i = 1; i <= count; i++)
     {
-        frames.push(new JugglerFrame(i, menu));
+        frames.push(new JugglerFrame(i, menu, true));
     }
     let activeElement = divs[0];
     let activeElementID = 0;

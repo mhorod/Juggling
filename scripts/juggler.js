@@ -7,7 +7,7 @@ There are fucking 500 lines and we don't want to mess up.
 */
 
 const g = 10;
-function JugglerFrame(trickID, div){
+function JugglerFrame(trickID, div, fromEntryID){
     globalStyle = getComputedStyle(document.body);
     this.visible = false;
     this.paused = false;
@@ -73,7 +73,10 @@ function JugglerFrame(trickID, div){
             instance.juggler.updateData(data[4]);
         }
     }
-    request.open("GET", "common/getTrickData.php?trickID="+trickID, true);
+    if(fromEntryID)
+        request.open("GET", "common/getEntryData.php?entryID="+trickID+"&trickOnly=true", true);
+    else
+        request.open("GET", "common/getTrickData.php?trickID="+trickID, true);
     request.send();
 }
 function EmptyJuggler(trickID){
