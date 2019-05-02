@@ -11,8 +11,16 @@
         <?php include("common/userMenu.php"); ?>
         <?php include("common/blogEntry.php"); ?>
         <div id = "page-wrapper">
-            <?php loadBlogEntry(2); ?>
-            <?php loadBlogEntry(1); ?>
+            <?php
+            
+            require_once("common/getEntryData.php");
+            $count = implode(",", getEntryCount());
+            for($i = $count - 1; $i >= 0; $i--)
+            {
+                loadBlogEntry($i);
+            }
+            
+            ?>
             
         </div>
    
