@@ -43,14 +43,14 @@ function main()
 
     let divs = menu.childNodes;
     let frames = [];
-    for(let i = 1; i <= count; i++)
+    for(let i = 0; i < count; i++)
     {
         frames.push(new JugglerFrame(i, menu, true));
     }
-    let activeElement = divs[0];
-    let activeElementID = 0;
-    divs[0].classList.add("active");
-    menu.style.left = (frames.length-1)*divs[0].offsetWidth/2; 
+    let activeElement = divs[count-1];
+    let activeElementID = count-1;
+    divs[count-1].classList.add("active");
+    menu.style.left = -(frames.length-1)*divs[0].offsetWidth/2; 
     function refreshDivs(){
         visibleTrickCount = Math.floor(Math.ceil(window.innerWidth/divs[0].offsetWidth)/2);
             for(let i = activeElementID-visibleTrickCount; i<=activeElementID+visibleTrickCount; i++){
@@ -82,7 +82,7 @@ function main()
         }
     }
     slider.oninput = updateAnimSpeed;
-    update_entry_trick_desc(0);
+    update_entry_trick_desc(count-1);
     divs.forEach(
         function(currentValue, index){
             currentValue.onclick = function()
