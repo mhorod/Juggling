@@ -1,10 +1,15 @@
 
+var globalStyle;
+
+window.addEventListener('keydown', function(e) {
+    if(e.keyCode == 32) {
+      e.preventDefault();
+    }
+  });
 
 
 function loadJuggler(trickWrapper)
 {
-    globalStyle = getComputedStyle(document.body);
-
     let trickID = parseInt(trickWrapper.id);
     let canvas = trickWrapper.getElementsByClassName("mainCanvas")[0];
 
@@ -59,6 +64,7 @@ function loadJuggler(trickWrapper)
 
 function initBlogJugglers()
 {
+    globalStyle = getComputedStyle(document.body);
     let trickWrappers = document.getElementsByClassName("post-trick-wrapper");
     for(let i = 0; i < trickWrappers.length; i++)
     {
