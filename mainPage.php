@@ -29,7 +29,29 @@
                     <input type = "button" class = "anim-button" value = "▮▮"/>
                     <input type = "range" min="1" max="1000" value="500" class = "anim-slider"/>
                 </div>
-                <div id = "blog-entry"></div>
+                <div id = "blog-entry">
+                    
+                    <section class = "post-wrapper" id = "$trickID">
+                        <div class = "post-body">
+                            <div class = "post-text-wrapper">
+                            <h3 class = "post-title">Trik tygodnia $date</h3>
+                            <span class = "post-text">
+                                $entry
+                            </span>
+                            
+                            </div>
+                        </div>
+                        <div class = "reaction-wrapper"> 
+                        <div class = "reaction-buttons">
+                            <span class = "reaction-button reaction-heart"> "^^" </span>
+                            <span class = "reaction-button reaction-comment">...</span>
+                        </div>
+                        </div>
+                        <div class = "comments-wrapper"> </div>
+                    </section>
+
+                    
+                </div>
             </div>
             
         </div>

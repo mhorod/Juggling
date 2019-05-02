@@ -17,12 +17,18 @@ function update_entry_trick_desc(entryID)
     {
         if(request.readyState == 4 && request.status == 200)
         {
-            let data = request.responseText;
-            document.getElementById("blog-entry").innerHTML = data;
+            let data = eval(request.responseText);
+            //[{trickID}, {entry}, {date}]
+            
+            document.getElementsByClassName("post-title")[0].innerHTML = "Trik tygodnia " + data[2];
+            document.getElementsByClassName("post-text")[0].innerHTML = data[1];
 	    }
     }
+    
+    document.getElementsByClassName("post-title")[0].innerHTML = "Trik tygodnia loading..." ;
+    document.getElementsByClassName("post-text")[0].innerHTML = "loading...";
     //This link will likely change
-	request.open("GET", "common/blogEntry.php?entryID="+entryID, true);
+	request.open("GET", "common/getEntryData.php?entryID="+entryID, true);
 	request.send();	
 }
 

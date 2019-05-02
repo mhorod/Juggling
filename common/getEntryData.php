@@ -32,10 +32,12 @@ function sendEntryData($entryID)
     if($query_row != null)
     {
         $trickID = $query_row["trickID"];
-
+        $entry = $query_row["entry"];
+        $date = $query_row["date"];
+        
         //Send JSON back
         echo<<<END
-        [$trickID]
+        [$trickID, "$entry", "$date"]
 END;
     }
     else

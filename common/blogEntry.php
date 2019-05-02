@@ -72,7 +72,6 @@ $mainText = <<<EOS
     </div>
     </div>
     <div class = "comments-wrapper"> </div>
-    
 </section>
 EOS;
     
