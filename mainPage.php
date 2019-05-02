@@ -1,6 +1,7 @@
 <html>
     <head>
-        <?php $path = $_SERVER['DOCUMENT_ROOT']; require_once($path."/dev/common/commonHead.php"); ?>
+        <?php
+        require_once("common/commonHead.php"); ?>
         <style>
         :root
         {
@@ -15,7 +16,7 @@
         
     </head>
     <body onload="main()">
-        <?php $path = $_SERVER['DOCUMENT_ROOT']; require_once($path."/dev/common/userMenu.php");?>
+        <?php require_once("common/userMenu.php");?>
         <div id = "page-wrapper">
 
             <nav id="suwajka"><section></section>

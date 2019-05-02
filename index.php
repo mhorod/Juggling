@@ -11,7 +11,6 @@
         <?php include("common/userMenu.php"); ?>
         <?php include("common/blogEntry.php"); ?>
         <div id = "page-wrapper">
-            
             <?php loadBlogEntry(15); ?>
             <?php loadBlogEntry(14); ?>
             

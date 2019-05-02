@@ -3,8 +3,7 @@
 
 function getTrickData($trickNumber)
 {
-    $path = $_SERVER['DOCUMENT_ROOT']."/dev/common/";
-    require("$path/connectDB.php");
+    require("connectDB.php");
     $table = "tricksdata";
     $query = "SELECT * FROM $table WHERE id=$trickNumber";
     $result = mysqli_query($mysqli, $query);

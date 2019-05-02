@@ -21,11 +21,11 @@ END;
 
 <html>
     <head>
-       <?php $path = $_SERVER['DOCUMENT_ROOT']."/dev/common/"; require_once($path."commonHead.php"); ?>
+       <?php require_once("../common/commonHead.php"); ?>
         <title>Logowanie</title>
     </head>
     <body>
-       <?php $path = $_SERVER['DOCUMENT_ROOT']."/dev/common/"; require_once($path."userMenu.php"); ?>
+       <?php require_once("../common/userMenu.php"); ?>
         <div id = "page-wrapper">
 
             <div class = "form" >

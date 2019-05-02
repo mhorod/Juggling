@@ -1,9 +1,8 @@
 
 <?php
-$username = "id8824418_root";
-$password = "NoChybaNie123";
-$database = "id8824418_tricks";
- 	
+$username = "root";
+$password = "";
+$database = "tricks";
 $mysqli = new mysqli("localhost", $username, $password, $database);
 $mysqli -> select_db($database) or die( "Unable to select database");
 mysqli_query($mysqli, "SET NAMES 'utf8'");

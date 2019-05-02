@@ -3,8 +3,7 @@
 
 function loadTrick($trickID)
 {
-    $path = $_SERVER['DOCUMENT_ROOT'];
-    require_once($path."/dev/common/getTrickData.php");
+    require_once("getTrickData.php");
     $query_row = getTrickData($trickID);
     $name = $query_row["name"];
     $difficulty = $query_row["difficulty"];
@@ -34,8 +33,7 @@ return $text;
 
 function loadBlogEntry($trickID, $withTrick = true)
 {
-$path = $_SERVER['DOCUMENT_ROOT'];
-require_once($path."/dev/common/getTrickData.php");
+require_once("getTrickData.php");
     
 $day = 1 + ($trickID - 1) * 7;
     

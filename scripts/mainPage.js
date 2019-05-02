@@ -22,7 +22,7 @@ function update_trick_desc(trickID)
 	    }
     }
     //This link will likely change
-	request.open("GET", "http://i-be-jugglin.000webhostapp.com/dev/common/blogEntry.php?trickID="+trickID, true);
+	request.open("GET", "common/blogEntry.php?trickID="+trickID, true);
 	request.send();	
 }
 

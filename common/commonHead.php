@@ -1,6 +1,7 @@
 <?php
-$path = "https://i-be-jugglin.000webhostapp.com/dev/common";
-$pathJS = "https://i-be-jugglin.000webhostapp.com/dev/scripts";
+$dir = str_replace('\\', '/', __DIR__);
+$root = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
+$path = str_replace($root, '', $dir);
 
 echo<<<END
 <meta charset = "utf-8"/>
@@ -16,6 +17,6 @@ echo<<<END
 <link rel="stylesheet" media="screen and (max-width: 600px)" href="$path/stylesheets/small-screen-style.css">
 <link rel="stylesheet" href="$path/stylesheets/common-screen-style.css">
 
-<script src = "$pathJS/juggler.js"></script>
+<script src = "$path/../scripts/juggler.js"></script>
 END;
 ?>
