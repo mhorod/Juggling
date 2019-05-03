@@ -36,7 +36,6 @@ END;
                     <h2>Rejestracja</h2>
                     <form action = "register.php" method = "post">
 <?php
-    session_start();
     $username = "";
     $login = "";
     $error = "";

@@ -33,7 +33,6 @@ END;
                 <form action = "log-in.php" method = "post">
                     
 <?php
-    session_start();
     $login = "";
     $password = "";
     $error = "";

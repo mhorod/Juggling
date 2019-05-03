@@ -7,17 +7,20 @@ if(!isset($_POST["register"]))
 }
 
 session_start();
+unset($_SESSION["registerError"]);
 
 $login = $_POST["login"];
 $name = $_POST["username"];
 $password = $_POST["password"];
 $repeat = $_POST["repeat"];
 
+
 $_SESSION["login"] = $login;
 $_SESSION["username"] = $name;
 
 $ok = false;
 $error = "";
+
 
 
 if(strlen($login) < 3 || strlen($login) > 20)
@@ -42,12 +45,54 @@ else if($password != $repeat)
 }
 else
 {
-    unset($_SESSION["registerError"]);
-    $ok = true;
-    $path = $_SERVER['DOCUMENT_ROOT']."/Tricks/common/";
+    
+    //Now check if that login is occupied
+    //Or register new user
+
+    $path = "../common";
     require("$path/connectDB.php");
-    $table = "users";
-    //Register
+    $table = "users";  
+
+    $login = htmlentities($login,ENT_QUOTES,"UTF-8");
+    $login = mysqli_real_escape_string($mysqli,$login);
+
+    $name =  htmlentities($name,ENT_QUOTES,"UTF-8");
+    $name = mysqli_real_escape_string($mysqli,$name);
+
+    //Check if login is occupied
+    $query = sprintf("SELECT * FROM users WHERE login = '%s'", $login);
+    $result = mysqli_query($mysqli, $query);
+    $isOccupied = mysqli_num_rows($result);
+    
+    if($isOccupied) {$error = "Login zajęty.";}
+    else
+    {
+        
+        //Check if username is occupied
+        $query = sprintf("SELECT * FROM `$table` WHERE `username` = '%s'", $name);
+        $result = mysqli_query($mysqli, $query);
+        $isOccupied = mysqli_num_rows($result);
+        if($isOccupied) {$error = "Nazwa użytkownika zajęta.";}
+        else
+        {
+            //Register
+            $password_hash = md5($password);
+            $query = sprintf("INSERT INTO `$table` (`id`, `login`, `username`, `password`) VALUES (NULL, '$login', '$name', '$password_hash')");
+            $result = mysqli_query($mysqli, $query);
+            
+            $query = sprintf("SELECT * FROM `$table` WHERE `login` = '%s' AND `password` = '%s'", $login, $password_hash);
+            $result = mysqli_query($mysqli, $query);
+            
+            $userData = mysqli_fetch_assoc($result);
+            $_SESSION["userID"] = $userData["id"];
+            $_SESSION["userName"] = $userData["username"];
+
+            unset($_SESSION["registerError"]);
+            $ok = true;
+        }
+    }
+
+    $mysqli -> close();
 }
 
 
@@ -58,5 +103,5 @@ if(!$ok)
     header("location:register-form.php");
 }
 else
-    header("location:http://i-be-jugglin.000webhostapp.com/dev/mainPage.php");
+    header("location:account.php");
 ?>
