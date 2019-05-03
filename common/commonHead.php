@@ -2,6 +2,7 @@
 $dir = str_replace('\\', '/', __DIR__);
 $root = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
 $path = str_replace($root, '', $dir);
+session_start();
 
 echo<<<END
 <meta charset = "utf-8"/>
