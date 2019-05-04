@@ -1,11 +1,10 @@
-//TODO: Add docs...
-
 var globalStyle;
 
+//Stop space scrolling page
 window.addEventListener('keydown', function(e) {
-  if(e.keyCode == 32) {
-    e.preventDefault();
-  }
+    if(e.keyCode == 32) {
+      e.preventDefault();
+    }
 });
 
 
@@ -67,9 +66,9 @@ function main()
     function togglePause(){
         frames[activeElementID].togglePause(Date.now());
         if(frames[activeElementID].paused){
-            button.value = "▶";
+            button.innerHTML = '<i class="fas fa-play"></i>';
         }else{
-            button.value = "▮▮";
+            button.innerHTML = '<i class="fas fa-pause"></i>';
         }
     }
     function updateAnimSpeed(){

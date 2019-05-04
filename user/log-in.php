@@ -1,10 +1,19 @@
 <?php
+/*
+    Receive data and attempt logging in
+*/
 
+//This file shouldn't be opened in browser and should only accecpt POST requests
 if(!isset($_POST["login"]))
 {
     $path = "http://i-be-jugglin.000webhostapp.com/dev/mainPage.php";
     header("location:$path");
 }
+
+$path = "../common";
+require("$path/connectDB.php");
+$usersTable = "users";
+
 session_start();
 unset($_SESSION["logInError"]);
 
@@ -13,34 +22,29 @@ $error = "";
 
 $login = $_POST["login"];
 $password = $_POST["password"];
-
 $_SESSION["login"] = $login;
-$_SESSION["password"] = $password;
 
-$path = "../common";
-require("$path/connectDB.php");
-$table = "users";
-
-
+//Make sure login won't do any harm to server
 $login = htmlentities($login,ENT_QUOTES,"UTF-8");
 $login = mysqli_real_escape_string($mysqli,$login);
 
 //Check if login exists
-$query = sprintf("SELECT * FROM `$table` WHERE `login` = '%s'", $login);
+$query = sprintf("SELECT * FROM `$usersTable` WHERE `login` = '%s'", $login);
 $result = mysqli_query($mysqli, $query);
 $exits = mysqli_num_rows($result);
 $error = "Nieznany login";
 
 if($exits)
 {
+    //If login exits, check if password is correct
     $password_hash = md5($password);
-    $query = sprintf("SELECT * FROM `$table` WHERE `login` = '%s' AND `password` = '%s'", $login, $password_hash);
+    $query = sprintf("SELECT * FROM `$usersTable` WHERE `login` = '%s' AND `password` = '%s'", $login, $password_hash);
     $result = mysqli_query($mysqli, $query);
     $match = mysqli_num_rows($result);
 
     if($match)
     {
-        echo "Logged in!";
+        //If logged in succesfully - set that in session
         $userData = mysqli_fetch_assoc($result);
         $_SESSION["userID"] = $userData["id"];
         $_SESSION["userName"] = $userData["username"];
@@ -52,7 +56,6 @@ if($exits)
     }
 }
 
-
 $mysqli -> close();
 
 if(!$ok)
@@ -62,10 +65,6 @@ if(!$ok)
 }
 else
 {
-    header("location:../");
+    header("location:../user/account.php");
 }
-
-
-
-
 ?>

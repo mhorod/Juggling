@@ -1,0 +1,74 @@
+/*
+    All variables that involve design (mainly colors and borders)
+*/
+:root
+{
+    
+/* General begin */
+    --page-background-color: #222222;
+    --main-font: 'Inconsolata', monospace;
+    --font-color: white;
+    
+    --link-default-color: white;
+    --link-hover-color: #eeeeee;
+    
+/* General end */
+    
+
+/* Juggler Frame begin */
+    
+    /* Frame */
+    --anim-background-color: #141414;
+    --anim-border: 2px solid #333333;
+    
+    /* Button */
+    --anim-button-color: #00964b;
+    --anim-button-hover-color: #00af58;
+    --anim-button-border: 2px solid #008341;
+    
+    /* Slider */
+    --anim-slider-wrapper-background-color: #4b4b4b;
+    --anim-slider-background-color: #777777; /* Slider line */
+    
+    /*Slider Handle */
+    --anim-slider-handle-color: #00964b;
+    --anim-slider-handle-border: solid 2px black;
+    
+    --anim-desc-background-color: #084d24; 
+    
+/* Juggler Frame end */
+    
+    
+/* Post begin */
+    --post-body-background: #237e3a;
+    --post-text-background: #1bc03f;
+    
+    /* Reactions */
+    --reaction-wrapper-background-color: #424242;
+    --reaction-button-background-color: #1bc03f;
+    --reaction-button-hover-background-color: #237e3a;
+    --reaction-heart-color: #424242;
+    --reaction-comment-color: #424242;
+    --reaction-hover-color: #eeeeee;
+
+/* Post end*/
+        
+/* Misc begin */
+    
+    --page-wrapper-background-color: #646464;
+    --footer-background-color: #444;
+    
+    /* Top Menu */
+    --user-menu-background-color: #333;
+    --user-menu-button-border: 1px dashed black;
+    --user-menu-button-color: #1bc03f;
+    --user-menu-button-hover-color: #237e3a;
+    
+    
+    /* Login / Register Form */
+    --form-background: #1bc03f;
+    --form-input-border: 1px solid #aaaaaa;
+    --form-error-color: #000;
+    
+/* Misc end */
+}

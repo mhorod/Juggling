@@ -1,5 +1,7 @@
-﻿<?php
+﻿<!-- Page with form to log in-->
 
+<?php
+//Format form with given data
 function displayForm($login, $error)
 {
     echo<<<END
@@ -13,26 +15,11 @@ function displayForm($login, $error)
     </div>
     <br>
 END;
-    
 }
-?>
 
-
-
-<html>
-    <head>
-       <?php require_once("../common/commonHead.php"); ?>
-        <title>Logowanie</title>
-    </head>
-    <body>
-       <?php require_once("../common/userMenu.php"); ?>
-        <div id = "page-wrapper">
-
-            <div class = "form" >
-                <h2>Logowanie</h2>
-                <form action = "log-in.php" method = "post">
-                    
-<?php
+//Fill form with previously entered values and reset them
+function refillForm()
+{
     $login = "";
     $password = "";
     $error = "";
@@ -45,13 +32,25 @@ END;
     if(isset($_SESSION["login"]))
     {
         $login = $_SESSION["login"];
+        unset($_SESSION["login"]);
     }
                     
     displayForm($login, $error);
-                    
-                    
-
+}
 ?>
+
+<html>
+    <head>
+       <?php require_once("../common/commonHead.php"); ?>
+        <title>Logowanie</title>
+    </head>
+    <body>
+       <?php require_once("../common/userMenu.php"); ?>
+        <div id = "page-wrapper">
+            <div class = "form" >
+                <h2>Logowanie</h2>
+                <form action = "log-in.php" method = "post">
+                    <?php refillForm(); ?>
                     <input type = "submit" value = "Loguj"/>
                  </form>
             </div>
@@ -59,5 +58,4 @@ END;
         
         <footer>Made by: Pichał and Hichał &copy; 2019;</footer>
     </body>
-    
 </html>

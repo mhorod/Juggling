@@ -369,11 +369,6 @@ function Path(throws, data, t1, ball = true){
     let c3 = wildCurveBetween(c1, c2);
     this.curves.push(c3);
 };
-Path.prototype.draw = function(ctx){
-    for(let i = 0; i<this.curves.length; i++){
-        this.curves[i].draw(ctx);
-    }
-};
 function PathWalker(path, offset){
     this.path = path;
     this.t = 0;
@@ -411,14 +406,6 @@ function Curve(t0, t1){
     this.getPosition = function(time){};
     this.getSpeed = function(time){};
     this.offset = function(time){};
-    this.draw = function(ctx){
-    for(let j = Math.ceil(this.t0/0.05)*0.05; j<=this.t1+0.00001; j+=0.05){
-            let pos = getCoords(ctx, this.getPosition(j));
-            ctx.beginPath();
-            ctx.ellipse(pos.x,pos.y,3,3,0,0,2*Math.PI);
-            ctx.fill();
-        }
-    };
 };
 function wildCurveBetween(c1, c2){
     let p0 = c1.getPosition(c1.t1);

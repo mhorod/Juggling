@@ -1,5 +1,7 @@
-<?php
+<!-- Page with form to register -->
 
+<?php
+//Format form with given data
 function displayForm($login, $username, $error)
 {
     echo<<<END
@@ -17,26 +19,11 @@ function displayForm($login, $username, $error)
 END;
 }
 
-?>
 
-
-
-<html>
-    <head>
-        <?php require_once("../common/commonHead.php"); ?>
-        <title>Rejestracja</title>
-    </head>
-    <body>
-        <?php require_once("../common/userMenu.php"); ?>
-        <div id = "page-wrapper">
-
-            
-            <div class = "form-wrapper">
-                <div class = "form" >
-                    <h2>Rejestracja</h2>
-                    <form action = "register.php" method = "post">
-<?php
-    $username = "";
+//Refill form with previously entered values and reset them
+function refillForm()
+{
+     $username = "";
     $login = "";
     $error = "";
     if(isset($_SESSION["registerError"]))
@@ -48,18 +35,32 @@ END;
     {
         $username = $_SESSION["username"];
         $login = $_SESSION["login"];
+        unset($_SESSION["username"]);
+        unset($_SESSION["login"]);
     }
                         
     displayForm($login, $username, $error);
-    
+}
+
 ?>
-                        <input type = "submit" value = "Zarejestruj"/>
-                     </form>
-                </div>
+
+<html>
+    <head>
+        <?php require_once("../common/commonHead.php"); ?>
+        <title>Rejestracja</title>
+    </head>
+    <body>
+        <?php require_once("../common/userMenu.php"); ?>
+        <div id = "page-wrapper">
+            <div class = "form" >
+                <h2>Rejestracja</h2>
+                <form action = "register.php" method = "post">
+                    <?php refillForm(); ?>
+                    <input type = "submit" value = "Zarejestruj"/>
+                </form>
             </div>
         </div>
         
         <footer>Made by: Pichał and Hichał &copy; 2019;</footer>
     </body>
-    
 </html>

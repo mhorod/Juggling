@@ -1,15 +1,29 @@
+/*
+    JS Handling the Blog page (index.php)
+    
+*/
 
 var globalStyle;
 
+//Stop space scrolling page
 window.addEventListener('keydown', function(e) {
     if(e.keyCode == 32) {
       e.preventDefault();
     }
-  });
+});
 
+function togglePause(button, juggler) {
+    juggler.togglePause(Date.now());
+    if(juggler.paused) {
+        button.innerHTML = '<i class="fas fa-play"></i>';
+    }
+    else {
+        button.innerHTML = '<i class="fas fa-pause"></i>';
+    }
+}
 
-function loadJuggler(trickWrapper)
-{
+//Load juggler intro given trickWrapper
+function loadJuggler(trickWrapper) {
     let trickID = parseInt(trickWrapper.id);
     let canvas = trickWrapper.getElementsByClassName("mainCanvas")[0];
 
@@ -37,38 +51,23 @@ function loadJuggler(trickWrapper)
     }, 10);
 
     document.body.onkeyup = function(e){
-        if(e.keyCode == 32){
-            juggler.togglePause(Date.now());
-            if(juggler.paused){
-                button.value = "▶";
-            }else{
-                button.value = "▮▮";
-            }
-        }
+        togglePause(button, juggler);
     }
     button.onclick = function(e){
-        juggler.togglePause(Date.now());
-        if(juggler.paused){
-            button.value = "▶";
-        }else{
-            button.value = "▮▮";
-        }
-    };
+        togglePause(button, juggler);
+    }
 
     juggler.changeAnimSpeed(slider.value/1000.0, Date.now());
     slider.oninput = function(e){
         juggler.changeAnimSpeed(slider.value/1000.0, Date.now());
     }
-
 }
 
 function initBlogJugglers()
 {
     globalStyle = getComputedStyle(document.body);
     let trickWrappers = document.getElementsByClassName("post-trick-wrapper");
-    for(let i = 0; i < trickWrappers.length; i++)
-    {
+    for(let i = 0; i < trickWrappers.length; i++) {
         loadJuggler(trickWrappers[i]);
-
     }
 }

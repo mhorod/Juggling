@@ -1,0 +1,39 @@
+/* For screens with width < 500x */
+:root
+{
+    --main-font-size: 15px;
+
+    --page-wrapper-padding: 30px;
+
+    --inner-wrapper-padding: 10px;
+
+    --trick-width: 240px;
+    --trick-height: 300px;
+    --trick-padding: 5px;
+
+    --animation-border-radius: 20px 20px 0px 0px;
+
+    --more-container-width: 240px;
+    --more-container-height: 500px;
+
+    --more-container-border-radius: 20px;
+}
+
+#page-wrapper
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: var(--page-wrapper-padding);
+    overflow: hidden;
+}
+
+
+
+.desc-item
+{
+    display: block;
+    width: calc(var(--trick-width));
+    text-align: center;
+}

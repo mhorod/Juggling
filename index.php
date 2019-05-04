@@ -1,5 +1,4 @@
-<!--Goal is that this is the main page instead of mainPage.php -->
-
+<!-- Main page - The Blog -->
 
 <html>
     <head>
@@ -11,22 +10,14 @@
         <?php include("common/userMenu.php"); ?>
         <?php include("common/blogEntry.php"); ?>
         <div id = "page-wrapper">
-            <?php
-            
+        <?php
             require_once("common/getEntryData.php");
             $count = implode(",", getEntryCount());
             for($i = $count - 1; $i >= 0; $i--)
-            {
-                loadBlogEntry($i);
-            }
-            
-            ?>
-            
+                {loadBlogEntry($i);}
+        ?>
         </div>
    
-    <footer>
-        Made by: Pichał and Hichał &copy; 2019;
-    </footer>
+    <footer> Made by: Pichał and Hichał &copy; 2019; </footer>
     </body>
-    
 </html>

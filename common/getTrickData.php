@@ -1,11 +1,20 @@
 <?php
-//File used to load trick from database
+/*
+    Features connecting to database and loading Trick data.
+    
+    Functions:
+        getTrickData($trickID) - returns row returned by SQL SELECT query
+        getTrickDataJSON($trickID) - returns Trick data in JSON format
+        sendTrickData($trickID) - echoes Trick data in JSON format
+       
+*/
 
-function getTrickData($trickNumber)
+//Load SQL row from database
+function getTrickData($trickID)
 {
     require("connectDB.php");
     $table = "tricksdata";
-    $query = "SELECT * FROM $table WHERE id=$trickNumber";
+    $query = "SELECT * FROM $table WHERE id=$trickID";
     $result = mysqli_query($mysqli, $query);
     $resultCount = mysqli_num_rows($result);
     if($resultCount == 1) //There should be exactly one trick with this ID
@@ -21,9 +30,10 @@ function getTrickData($trickNumber)
     
 }
 
-function getTrickDataJSON($trickNumber)
+//Format SQL row to JSON format
+function getTrickDataJSON($trickID)
 {
-    $row = getTrickData($trickNumber);
+    $row = getTrickData($trickID);
         
     if($row != null)
     {
@@ -34,29 +44,23 @@ function getTrickDataJSON($trickNumber)
         $desc = $row["description"];
         $code = $row["code"];
 
-        $text = <<<END
-        ["$name", "$difficulty", "$siteswap", "$desc", $code]
-END;
+        $text = "['$name', '$difficulty', '$siteswap', '$desc', $code]";
     }
     else
     {
-        $text = <<<END
-        ["Trick not found", "", "", "", ""]
-END;
+        $text = '["Trick not found", "-", "-", "", ""]';
     }
     return $text;
 }
-    
 
-
-function sendTrickData($trickNumber)
+function sendTrickData($trickID)
 {
-    echo getTrickDataJSON($trickNumber);
+    echo getTrickDataJSON($trickID);
 }
 
+
+//Handle GET requests
 if(isset($_GET["trickID"])) 
     sendTrickData($_GET["trickID"]);
 
-if(isset($_POST["trickID"]))
-    sendTrickData($_POST["trickID"]);
 ?>

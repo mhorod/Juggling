@@ -1,0 +1,352 @@
+/* 
+    Everything that is shared betwwen styles.
+    To make it easier configurable uses variables deined in apriopriate files.
+*/
+
+:root
+{
+    --floating-elements-margin: 10px;
+    
+    --slider-handle-size: 20px;
+    --slider-border-radius: 40%;
+    --slider-handle-width: 20px;
+
+    --slider-bar-width: 80%;
+    --slider-bar-height: 5px;
+    
+    --reaction-button-width: 50px;
+    --reaction-button-height: 20px;
+    --reaction-button-padding: 5px;
+    
+    
+    --user-menu-padding: 5px;
+    --footer-padding: 20px;
+}
+
+body
+{
+    background-color: var(--page-background-color);
+    font-family: var(--main-font);
+    color: var(--font-color);
+    font-size: var(--main-font-size);
+}
+
+a
+{
+    text-decoration: none;
+    outline: none;
+    color: var(--link-default-color);
+}
+
+a:hover
+{
+    color: var(--link-hover-color);
+}
+
+footer
+{
+    background-color: var(--footer-background-color);
+    margin: auto;
+    padding: var(--footer-padding);
+    margin-top: var(--floating-elements-margin);
+    text-align: center;  
+}
+
+.slider-wrapper
+{
+    background-color: var(--anim-slider-wrapper-background-color);
+    border: var(--anim-border);
+    border-top: none;
+    
+    width: var(--trick-width);
+    
+    margin:auto;
+    padding: var(--trick-padding);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;   
+}
+
+.anim-button
+{
+    background-color: var(--anim-button-color);
+    border: var(--anim-button-border);
+    outline: none;
+    display: block;
+    height: 15px;
+    font-size:15px;
+    text-align: center;
+    width: calc(100% - var(--slider-bar-width));
+}
+
+.anim-button:hover
+{
+    background-color: var(--anim-button-hover-color);
+}
+
+.anim-slider 
+{
+    background-color: var(--anim-slider-background-color);
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;  
+    width: var(--slider-bar-width); 
+    height: var(--slider-bar-height);
+}
+
+/* Handle */
+.anim-slider::-webkit-slider-thumb, .anim-slider::-moz-range-thumb 
+{
+    background: var(--anim-slider-handle-color);
+    border: var(--anim-slider-handle-border);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none; 
+    width: var(--slider-handle-size);
+    height: var(--slider-handle-size);
+}
+
+#page-wrapper
+{
+    background-color: var(--page-wrapper-background-color);
+    padding: var(--page-wrapper-padding);
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.trick-wrapper
+{
+    overflow: hidden;
+    padding: var(--inner-wrapper-padding);
+}
+
+.animation-wrapper
+{
+    background-color: var(--anim-background-color);
+    border: var(--anim-border);
+    width: var(--trick-width);
+    height: var(--trick-height);
+    padding: var(--trick-padding);
+}
+
+.mainCanvas
+{
+    width: inherit;
+    height: inherit;
+}
+
+.trick-desc
+{
+    background: var(--anim-desc-background-color);
+    border: var(--anim-border);
+    border-top: none;
+    display: block;
+    width: var(--trick-width);
+    padding: var(--trick-padding);
+    overflow: hidden;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+}
+
+.desc-item
+{
+    display: block;
+    width: var(--trick-width);
+    text-align: center;
+}
+
+#suwajka section
+{
+    position: relative;
+    float:left;
+    display: flex;
+    transition: left 0.5s;
+    padding: 50px;
+}
+
+#suwajka section div 
+{
+  transform: scale(1);
+  transition: transform 0.5s;
+}
+
+#suwajka section div.active 
+{ 
+  transform: scale(1.2);
+}
+
+#user-menu
+{
+    background: var(--user-menu-background-color);
+    display: flex;
+    justify-content: right;
+    padding: var(--user-menu-padding);
+    margin: auto;
+    margin-bottom: var(--floating-elements-margin);
+}
+
+.menu-button
+{
+    padding: 10px;
+    border-right: var(--user-menu-button-border);
+    background: var(--user-menu-button-color);
+    transition: all 0.25s ease;
+}
+
+.menu-button:hover
+{
+    background: var(--user-menu-button-hover-color);
+    cursor: pointer;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.form
+{
+    background: var(--form-background);
+    padding: 15px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.form input[type="submit"]
+{
+    outline: none;
+    cursor: pointer;
+}
+.form input[type="submit"]:hover
+{
+    background: #dddddd;
+}
+
+.form input
+{
+    font-family: 'Courier New', Courier, monospace;
+    border: var(--form-input-border);
+    padding: 2px;
+    margin: 2px;
+    width: 200px;
+    clear: both;
+}
+
+@media only screen and (min-width: 534px)
+{
+    .form-input
+    {
+        float: left;
+    }
+}
+
+.form-input
+{
+    display: block;
+    padding: 2px;
+    width: 250px;
+}
+
+
+.post-wrapper
+{
+    padding: 10px;
+    width: 80%;
+}
+
+.post-body
+{
+    background: var(--post-body-background);
+    display:flex;
+    padding: 5px;
+}
+
+
+.post-trick-wrapper
+{
+    float:left;
+    padding: 5px;
+
+}
+
+.post-text-wrapper
+{
+    padding: 10px;
+    background: var(--post-text-background);
+    width:100%;
+}
+
+.reaction-wrapper
+{
+    background: var(--reaction-wrapper-background-color);
+    padding: 5px;
+    overflow: hidden;
+}
+
+.reaction-buttons
+{
+    float: right;
+}
+
+.reaction-button
+{
+    padding: var(--reaction-button-padding);
+    text-align: center;
+    background-color: var(--reaction-button-background-color);
+    display: block;
+    width: var(--reaction-button-width);
+    height: var(--reaction-button-height);
+    float: left;
+    transition: all 0.25s ease;
+}
+
+.reaction-button:hover
+{
+    color: var(--reaction-hover-color);
+    background-color:  var(--reaction-button-hover-background-color);
+    cursor: pointer;
+}
+
+.reaction-heart
+{
+    color: var(--reaction-heart-color);
+}
+
+.reaction-comment
+{
+    color: var(--reaction-comment-color);
+}
+
+
+/* The one on mainPage.php */
+#blog-entry
+{
+    display: flex;
+    justify-content: center;
+}
+
+.error
+{
+    color: var(--form-error-color);
+}
+
+
+
