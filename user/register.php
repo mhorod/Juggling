@@ -52,7 +52,7 @@ $_SESSION["username"] = $name;
 $ok = false;
 $error = validate($login, $name, $password, $repeat);
 
-if($error != "")
+if($error == "")
 {
     //Validation passed
     //Now check if that login is occupied or register a new user
